@@ -86,24 +86,24 @@ app.patch("/notes/:id", async (req, res) => {
   }
 });
 
-app.delete("/notes/:id", async (req, res) => {
-  try {
-    const note = await Note.findByIdAndDelete(req.params.id);
-    console.log(note);
+// app.delete("/notes/:id", async (req, res) => {
+//   try {
+//     const note = await Note.findByIdAndDelete(req.params.id);
+//     console.log(note);
 
-    if (!note) {
-      return res.status(404).json({
-        message: "Note not found",
-      });
-    }
-    res.status(200).json({ status: "success" });
-  } catch (e) {
-    console.log(e);
-    return res.status(400).json({
-      status: "fail",
-    });
-  }
-});
+//     if (!note) {
+//       return res.status(404).json({
+//         message: "Note not found",
+//       });
+//     }
+//     res.status(200).json({ status: "success" });
+//   } catch (e) {
+//     console.log(e);
+//     return res.status(400).json({
+//       status: "fail",
+//     });
+//   }
+// });
 
 mongoose
   .connect(mongoURL, {
