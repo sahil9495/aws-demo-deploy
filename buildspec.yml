@@ -20,7 +20,7 @@ phases:
     commands:
       - echo Build started on 'date'
       # run build script
-      - npm run-script build
+      # npm run-script build
       - echo Building docker image
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
