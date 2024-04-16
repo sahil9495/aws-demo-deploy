@@ -44,3 +44,4 @@ artifacts:
     - models/*
     - package.json
     - index.js
+    - imagedefinitions.json
