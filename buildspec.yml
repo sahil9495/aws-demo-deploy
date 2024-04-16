@@ -35,7 +35,7 @@ phases:
       - DOCKER_CONTAINER_NAME=ec2-project2-container
       - printf '[{"name":"DOCKER_CONTAINER_NAM","imageUri":"IMAGE_TAG"}]' > imagedefinitions.json
       - echo printing imagedefinations.json     
-      - cat imagedefinations.json
+      - cat imagedefinitions.json
      
 artifacts:
   # include all files required to run application
