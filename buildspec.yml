@@ -35,6 +35,8 @@ phases:
       - DOCKER_CONTAINER_NAME=ec2-project2-container
       - printf '[{"name":"%s","imageUri":"%s"}]' $DOCKER_CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinations.json
       - echo printing imagedefinations.json
+      - sed -i -e "s|DOCKER_CONTAINER_NAME|$REPOSITORY_URI|g" imagedefinations.json
+      - sed -i -e "s|IMAGE_TAG|$imageUri|g" imagedefinations.json      
       - cat imagedefinations.json
      
 artifacts:
