@@ -18,24 +18,24 @@ phases:
        
   build:
     commands:
-      - echo Build Statred on 'date'
+      - echo Build started on 'date'
       # run build script
       - npm run-script build
-      - echo Building Docker image
-      - docker build -t $RREPOSITORY_URI:latest
-      - docker tag $RREPOSITORY_URI:latest $RREPOSITORY_URI:$IMAGE_TAG
+      - echo Building docker image
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
-      - echo build compleded on 'date'
-      - echo pushing into repository
-      - docker push $RREPOSITORY_URI:latest
-      - docker push $RREPOSITORY_URI:$IMAGE_TAG
-      - echo writing image defination files
+      - echo Build completed on 'date'
+      - echo pushing to REPOSITORY_URI
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - echo Writing image defination file...
+      # Give your container a name
       - DOCKER_CONTAINER_NAME=ec2-project2-container
-      - printf '[{"name": "%s","imageurl":"%s"}]' $DOCKER_CONTAINER_NAME  $RREPOSITORY_URI:$IMAGE_TAG > imagedefinations.json
+      - printf '[{"name":"%s","imageUri":"%s"}]' $DOCKER_CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinations.json
       - echo printing imagedefinations.json
       - cat imagedefinations.json
-  
      
 artifacts:
   # include all files required to run application
@@ -44,4 +44,3 @@ artifacts:
     - models/*
     - package.json
     - index.js
-    
